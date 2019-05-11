@@ -1,6 +1,6 @@
-#Chat Space  DB設計
+# Chat Space  DB設計
 
-##機能概要
+## 機能概要
 - ユーザー登録機能
 - 新規チャットグループ作成機能
 - メッセージ登録機能
@@ -11,7 +11,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true, null: false,|
+|name|string|index: true,|
 |email|string|null false, unique: true|
 |password|string|null false|
 
