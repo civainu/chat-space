@@ -17,13 +17,16 @@
 
 ##messegesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |body|text||
 |image|string||
-|group_id|integer|foreign_key: true|
-|user_id|integer|foreign_key: true|
+|group_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
 
 ##groupテーブル
 
-|group_id|integer|foreign_key: true|
-|user_id|integer|foreign_key: true|
-s
+|Column|Type|Options|
+|------|----|-------|
+|group_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
