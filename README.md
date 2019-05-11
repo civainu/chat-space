@@ -1,24 +1,56 @@
-# README
+# Chat Space  DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 機能概要
+- ユーザー登録機能
+- 新規チャットグループ作成機能
+- メッセージ登録機能
+- 画像登録機能
+- 複数チャットグループ登録機能
 
-Things you may want to cover:
+## usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|name|string|index: true,|
+|email|string|null false, unique: true|
+|password|string|null false|
 
-* System dependencies
+### Association
+- has_many :groups, through: :members
+- has_many :members
+- has_many :messages
 
-* Configuration
+## messegesテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|body|text||
+|image|string||
+|group_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
 
-* Database initialization
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* How to run the test suite
+## members table
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|group_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
 
-* Deployment instructions
+### Association
+- belongs_to :user
+- belongs_to :group
 
-* ...
+## groups table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|index: true, null: false|
+
+### Association
+- has_many :users, through: :members
+- has_many :members
+- has_many :messages
