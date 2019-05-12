@@ -1,0 +1,120 @@
+.chat-main{
+  width: calc(100vw - 300px);
+  float: left;
+  .main-header{
+    background-color: $white-font;
+    height: 100px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border: medium solid 1px #eeeeee;
+    .current-group__name{
+      color: #333333;
+      font-size: 20px;
+      margin-top: 35px;
+    }
+    .group-member{
+      color: $message-gray;
+      font-size: 12px;
+      padding: 0 40px 0 40px;
+    }
+    .member-list{
+      display: inline-block;
+      color: $message-gray;
+      font-size: 5px;
+      &__member{
+        display: inline-block;
+      }
+    }
+    
+    
+    .edit-btn{
+      color: $blue-button;
+      position: absolute;
+      top: 28px;
+      right: 40px;
+      box-sizing: border-box;
+      border: solid 1.5px;
+      & a{
+        color: $blue-button;
+        display: block;
+        line-height: 40px;
+        text-decoration: none;
+        padding: 0 20px 0 20px;
+      }
+    }
+  }
+
+  .messages{
+    background-color: #fafafa;
+    height: calc(100vh - 190px);
+    padding: 46px 40px;
+    overflow: scroll;
+    .upper-info{
+      padding: 0 0;
+      margin: 0 0;
+      &__user{
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__date{
+        color: $message-dark;
+        font-size: 12px;
+      }
+      &__text{
+        color: $message-gray;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .form{
+    background-color: #ddd;
+    height: 90px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    .input-box{
+      position: relative;
+      width: 100%;
+      // &__text{
+      //   position: relative;
+      //   display: inline-block;
+      //   width: calc(100% - 115px);
+      //   input.text-box{
+      //     width: 100%;
+      //     height: 50px;
+      //     box-sizing: border-box;
+        }
+        .input-box__text{
+          color: $message-gray;
+          height: 50px;
+          width: 100%;
+          padding: 0 40px 0 10px;
+          border-style: none;
+        }
+        .image-label{
+          font-size: 1.3rem;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          &__input{
+          display: none;
+        }
+      }
+    // }
+      &__button{
+        background-color: $blue-button;
+        color: $white-font;
+        width: 100px;
+        padding: 0 30px;
+        margin-left: 15px;
+        float: right;
+        text-align: center;
+        line-height: 50px;
+        @include hover-opacity();
+      }
+    }
+  }
+// }
