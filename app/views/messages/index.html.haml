@@ -2,24 +2,20 @@
 %div.flash-box
   %div.notice グループを作成しました
 %div.wrapper
-  %div.chat-side
-    %div.side-header
-      %p.side-header__user-name civa
-      %ul.user-menu
-        %li.user-menu__edit-user
+  %div.side
+    %div.side__header
+      %p.side__header__user-name civa
+      %ul.user
+        %li.user__edit
           %a{:href => "/groups/new"}
             %i.fa.fa-edit
-        %li.user-menu__new-group
+        %li.user__new-group
           %a{:href => "/users/185/edit"}
             %i.fa.fa-cog
-    %div.groups
+    %div.group
       %a{:href => "/groups/895/messages"}
-        %div.group
+        %div.groups
           %p.group__group-name cat
-          %p.group__latest-message まだメッセージがありません
-      %a{:href => "/groups/893/messages"}
-        %div.group
-          %p.group__group-name inu
           %p.group__latest-message まだメッセージがありません
 %div.chat-main
   %div.main-header
@@ -30,7 +26,7 @@
         %li.member-list__member atsuki
         %li.member-list__member civa
     %a{:href => "/groups/895/edit"}
-      %div.main-header__edit-btn Edit
+      %div.edit-btn Edit
   %div.messages
     %div.message{"data-message_id" => "2526"}
       %div.upper-info
@@ -47,6 +43,6 @@
         %label.image-label{:for => "message_image"}
           %i.fa.fa-image
           %input#message_image.image-label__input{:name => "message[image]", :type => "file"}/
-      %input.new-message__submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+      %input.form__button{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
 
 
