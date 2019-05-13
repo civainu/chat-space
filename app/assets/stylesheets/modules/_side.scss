@@ -12,6 +12,7 @@
     justify-content: space-between;
     width: 100%;
     font-weight: bold;
+    box-sizing: border-box;
     .user{
       padding: 35px 20px 40px 20px;
       &__edit{
@@ -23,9 +24,7 @@
       }
       &__new-group{
         display: inline-block;
-        float: right;
         margin-left: 0.3rem;
-        margin: 0 20px;
         & a{
           color: $white-font;
         }
