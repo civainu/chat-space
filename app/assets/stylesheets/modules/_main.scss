@@ -38,7 +38,6 @@
     
     .edit-btn{
       color: $blue-button;
-      position: absolute;
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
@@ -56,7 +55,7 @@
 
   .messages{
     background-color: #fafafa;
-    height: calc(100vh - 190px);
+    height: calc(100vh - 262px);
     padding: 46px 40px;
     overflow: scroll;
     .message{
@@ -83,7 +82,7 @@
 }
 .form{
     background-color: #ddd;
-    height: 90px;
+    height: 50px;
     padding: 20px 40px;
     display: block;
   .new-message{

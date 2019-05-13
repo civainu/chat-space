@@ -33,7 +33,6 @@
   }
   .group{
       .groups{
-        margin: 0 0 40px 0;
         @include hover-opacity();
         height: calc(100vh - 100px);
         background-color: #2f3e51;
