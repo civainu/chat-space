@@ -1,0 +1,48 @@
+
+%div.flash-box
+  %div.notice グループを作成しました
+%div.wrapper
+  %div.side
+    %div.side__header
+      %p.side__header__user-name civa
+      %ul.user
+        %li.user__edit
+          %a{:href => "/groups/new"}
+            %i.fa.fa-edit
+        %li.user__new-group
+          %a{:href => "/users/185/edit"}
+            %i.fa.fa-cog
+    %div.group
+      %a{:href => "/groups/895/messages"}
+        %div.groups
+          %p.group__group-name cat
+          %p.group__latest-message まだメッセージがありません
+%div.chat-main
+  %div.main-header
+    %div.current-group{"data-group_id" => "895"}
+      %h2.current-group__name cat
+      %ul.member-list
+        Member：
+        %li.member-list__member atsuki
+        %li.member-list__member civa
+    %a{:href => "/groups/895/edit"}
+      %div.edit-btn Edit
+  %div.messages
+    %div.message{"data-message_id" => "2526"}
+      %div.upper-info
+        %p.upper-info__user civa
+        %p.upper-info__date 2019/05/06(Mon) 07:23:41
+      %p.message__text
+      %img{:src => "/uploads/message/image/2526/1d101c678760c35f2a958c23d0e958a0.jpg"}/
+  %div.form
+    %form#new_message.new-message{"accept-charset" => "UTF-8", :action => "/groups/895/messages", :enctype => "multipart/form-data", :method => "post"}
+      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+      %input{:name => "authenticity_token", :type => "hidden", :value => "5XcCp8KgqVQEp4hr8vrrQ5ifcbxL2F4c4z003pGv1aOApFsOu4Hc5Cgp/D6kIFONgI3/APpq3xtV3HmW73g+Rg=="}/
+      %div.input-box
+        %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+        %label.image-label{:for => "message_image"}
+          %i.fa.fa-image
+          %input#message_image.image-label__input{:name => "message[image]", :type => "file"}/
+      %input.form__button{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+
+

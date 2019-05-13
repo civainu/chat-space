@@ -1,0 +1,9 @@
+$blue-button: #38AEF0;
+$white-font: #FFFFFF;
+
+$message-dark: #434A54;
+$message-gray: #999999;
+
+@mixin hover-opacity(){
+  &:hover {opacity: 0.6;}
+}
