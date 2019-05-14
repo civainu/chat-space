@@ -5,7 +5,7 @@
         = current_user.name
       %ul.user
         %li.user__edit
-          %a{:href => "/groups/new"}
+            = link_to new_group_path do
             %i.fa.fa-edit
         %li.user__new-group
             = link_to edit_user_path(current_user) do
