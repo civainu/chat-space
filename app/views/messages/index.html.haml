@@ -34,15 +34,13 @@
         %p.upper-info__date 2019/05/06(Mon) 07:23:41
       %p.message__text
       %img{:src => "/uploads/message/image/2526/1d101c678760c35f2a958c23d0e958a0.jpg"}/
-  %div.form
-    %form#new_message.new-message{"accept-charset" => "UTF-8", :action => "/groups/895/messages", :enctype => "multipart/form-data", :method => "post"}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-      %input{:name => "authenticity_token", :type => "hidden", :value => "5XcCp8KgqVQEp4hr8vrrQ5ifcbxL2F4c4z003pGv1aOApFsOu4Hc5Cgp/D6kIFONgI3/APpq3xtV3HmW73g+Rg=="}/
-      %div.input-box
-        %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-        %label.image-label{:for => "message_image"}
-          %i.fa.fa-image
-          %input#message_image.image-label__input{:name => "message[image]", :type => "file"}/
-      %input.form__button{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+.form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
 
 
