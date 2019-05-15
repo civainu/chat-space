@@ -27,20 +27,15 @@
         %li.member-list__member civa
     %a{:href => "/groups/895/edit"}
       %div.edit-btn Edit
-  %div.messages
-    %div.message{"data-message_id" => "2526"}
-      %div.upper-info
-        %p.upper-info__user civa
-        %p.upper-info__date 2019/05/06(Mon) 07:23:41
-      %p.message__text
-      %img{:src => "/uploads/message/image/2526/1d101c678760c35f2a958c23d0e958a0.jpg"}/
-.form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
+  .messages
+    = render @messages
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'form__submit'
 
 
