@@ -4,7 +4,6 @@
   float: left;
   display: block;
   .main-header{
-    background-color: $white-font;
     height: 100px;
     padding: 0 40px;
     display: flex;
@@ -37,19 +36,16 @@
     
     
     .edit-btn{
-      color: $blue-button;
+      border: 1px solid $light_blue;
+      color: $light_blue;
       height: 40px;
       line-height: 40px;
-      padding: 0 20px;
       margin-top: 30px;
-      border: solid 1px;
-      // & a{
-      //   color: $blue-button;
-      //   display: block;
-      //   line-height: 40px;
-      //   text-decoration: none;
-      //   padding: 0 20px 0 20px;
-      // }
+      padding: 0 20px;
+      &__button {
+        color: $light_blue;
+        text-decoration: none;
+      }
     }
   }
 
