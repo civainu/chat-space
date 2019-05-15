@@ -4,29 +4,35 @@
 %div.wrapper
   %div.side
     %div.side__header
-      %p.side__header__user-name civa
+      %p.side__header__user-name 
+        = current_user.name
       %ul.user
         %li.user__edit
-          %a{:href => "/groups/new"}
+          = link_to new_group_path do
             %i.fa.fa-edit
         %li.user__new-group
-          %a{:href => "/users/185/edit"}
-            %i.fa.fa-cog
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
     %div.group
-      %a{:href => "/groups/895/messages"}
-        %div.groups
-          %p.group__group-name cat
-          %p.group__latest-message まだメッセージがありません
+      %div.groups
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group) do
+            %p.group__group-name 
+              = group.name
+            %p.group__latest-message 
+              = group.show_last_message
 %div.chat-main
   %div.main-header
-    %div.current-group{"data-group_id" => "895"}
-      %h2.current-group__name cat
+    %div.current-group
+      %h2.current-group__name
+        = @group.name
       %ul.member-list
         Member：
-        %li.member-list__member atsuki
-        %li.member-list__member civa
-    %a{:href => "/groups/895/edit"}
-      %div.edit-btn Edit
+        - @group.users.each do |user|
+          %p
+            = user.name
+      %div.edit-btn
+        = link_to "Edit",edit_group_path(@group)
   .messages
     = render @messages
   .form

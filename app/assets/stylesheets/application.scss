@@ -1,6 +1,6 @@
 @import "reset";
 @import "config/variable";
-@import "modules/side";
+// @import "modules/side";
 @import "modules/main";
 @import "modules/flashbox";
 @import "modules/groups";
@@ -9,5 +9,5 @@
 @import "config/colors";
 @import "modules/flash";
 @import "modules/group";
-// @import "modules/chat";
-// @import "modules/side_bar";
+@import "modules/chat";
+@import "modules/side_bar";
