@@ -21,7 +21,10 @@
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         margin-left: 0.3rem;
+        & a{
+          color: $white-font;
       }
+    }
       &__new-group{
         display: inline-block;
         margin-left: 0.3rem;

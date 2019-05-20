@@ -42,10 +42,10 @@
       line-height: 40px;
       margin-top: 30px;
       padding: 0 20px;
-      &__button {
-        color: $light_blue;
-        text-decoration: none;
-      }
+      // &__button {
+      //   color: $light_blue;
+      //   text-decoration: none;
+      // }
     }
   }
 
@@ -79,24 +79,40 @@
 
   .form {
     background-color: #DDDDDD;
-    box-sizing: border-box;
-    height: 90px;
-    padding: 20px 50px 20px 40px;
+    width:100%;
+    box-sizing:border-box;
+    height:90px;
+    padding: 20px 40px;
+    bottom:0;
+  
     &__message {
       display: flex;
       border: none;
       float: left;
       height: 50px;
-      width: calc(100% - 150px);
+      width: calc(100% - 120px);
       background-color: #FFF;
     }
     &__mask {
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    &__image{
       background-color: $white;
       color: $message-dark;
       height: 50px;
       width: 100%;
       padding: 0 0px 0 0px;
       border-style: none;
+      }
+    }
+      .icon{
+        color:black;
+        box-sizing: border-box;
+        font-size: 1.3rem;
+        position: absolute;
+        padding: 15px 0;
       }
       .hidden {
         display: none;
