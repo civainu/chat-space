@@ -92,17 +92,17 @@
     }
     &__mask {
       background-color: $white;
-      color: $message-gray;
+      color: $message-dark;
       height: 50px;
       width: 100%;
-      padding: 0 10px 0 10px;
+      padding: 0 0px 0 0px;
       border-style: none;
       }
       .hidden {
         display: none;
       }
     }
-    &__submit {
+    .form__submit {
       background-color: $light_blue;
       border: none;
       color: $white;
