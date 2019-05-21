@@ -34,17 +34,15 @@ $('#new_message').on('submit', function(e) {
     contentType: false
   })
   .done(function(data) {
-    var message = buildMessage(data);
-    $('.messages').append(message);
+    var html = buildMessage(data);
+    $('.messages').append(html);
+    $('.form__submit').prop('disabled', false);
     $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight})
     $('#new_message')[0].reset();
   })
   .fail(function() {
     alert('メッセージの送信に失敗しました');
   })
-  .always(function(data){
-    $('.form__submit').prop('disabled', false);
- })
 })
 
   function appendUser(user) {
@@ -54,11 +52,18 @@ $('#new_message').on('submit', function(e) {
      </div>`
   $('#user-search-result').append(html);
  }
+
+ function appendNoUser(user) {
+  var html =`<div class="chat-group-user clearfix">
+                <p class="chat-group-user__name"> 一致するユーザーがいません </p>
+              </div>`
+  $('#user-search-result').append(html);
+}
   function addUser(user_id, user_name){
     var html = `<div class="chat-group-user clearfix">
-      <p class="chat-group-user__name">${user.name}</p>
-      <input name="chat_group[user_ids][]" type="hidden" value=${user.id}>
-      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">削除</a>
+      <p class="chat-group-user__name">${user_name}</p>
+      <input name="chat_group[user_ids][]" type="hidden" value=${user_id}>
+      <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user_id}" data-user-name="${user_name}">削除</a>
      </div>`
   $('#chat-group-user').append(html);
  }
@@ -85,5 +90,15 @@ $('#user-search-field').on("keyup", function(){
   .fail(function(){
     alert('ユーザー検索に失敗しました');
   })
+})
+$('#user-search-result').on("click",".chat-group-user__btn--add",function(){
+  var user_id = $(this).data('user-id')
+  var user_name = $(this).data('user-name')
+  addUser(user_id,user_name);
+  $(this).parent().remove();
+ })
+
+$('.chat-group-form__field').on("click",".chat-group-user__btn--remove", function(){
+  $(this).parent().remove();
 })
 })
