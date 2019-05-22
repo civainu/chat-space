@@ -1,6 +1,9 @@
 class Api::MessagesController < ApplicationController
   def index
-    User.where(id: )
-    => SELECT `users`.* FROM `users` WHERE `users`.`name` = 'hoge'
+    @message = Message.new
+    @messages = @group.messages.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json { @new_messages = @messages.where('id > ?', params[:id]) }
   end
 end

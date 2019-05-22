@@ -72,6 +72,32 @@ $('#new_message').on('submit', function(e) {
   $('#chat-group-users').append(html);
  }
 
+ function update(){
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    var url = location.href
+    var last_id = $('.main-body__text').last().data('message-id')
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      //追加するHTMLの入れ物を作る
+      var insertHTML = '';
+      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+
+      //メッセージが入ったHTMLを取得
+
+      //メッセージを追加
+
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+}
+
 $('#user-search-field').on("keyup", function(){
   var input = $('#user-search-field').val();
   $.ajax({
@@ -105,4 +131,6 @@ $('#user-search-result').on("click",".chat-group-user__btn--add",function(){
 $('.chat-group-form__field').on("click",".chat-group-user__btn--remove", function(){
   $(this).parent().remove();
 })
-})
+setInterval(reloadMessages, 5000);
+});
+
