@@ -68,7 +68,7 @@ $('#new_message').on('submit', function(e) {
                   <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn">削除</div>
                   <input name="group[user_ids][]" type="hidden" id="group_user_ids" value="${user_id}">
                 </div>`
-     console.log(html);
+                
   $('#chat-group-users').append(html);
  }
 

@@ -9,13 +9,13 @@
     .chat-group-form__field--left
       = f.label :グループ名, class: 'chat-group-form__label'
     .chat-group-form__field--right
-      = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
+      = f.text_field :name, class: "chat-group-form__field__input", id: "chat_group_name", placeholder: "グループ名を入力してください", type: "text", value: "#{group.name}"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :チャットメンバーを追加, class: 'chat-group-form__label'
     .chat-group-form__field--right
-      .chat-group-form__search.clearfix#user_seatch-field
-        %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}
+      .chat-group-form__search.clearfix
+        = f.text_field :users, class: "chat-group-form__field__input", id: "user-search-field", placeholder: "追加したいユーザー名を入力してください", type: "text", autocomplete: "off", value: ""
       #user-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
@@ -26,13 +26,7 @@
         .chat-group-user.clearfix.js-chat-member{id: "chat-group-user-#{current_user.id}"}
           = f.hidden_field :user_ids, name: "group[user_ids][]", value: current_user.id
           %p.chat-group-user__name=current_user.name
-        -# - group.users.each do |user|
-        -#   - if current_user.id != user.id
       #chat-group-users
-        -# .chat-group-user.clearfix.js-chat-member{id: "chat-group-user-#{current_user.id}"}
-        -#   = f.hidden_field :user_ids, name: "group[user_ids][]", value: current_user.id
-        -#     %p.chat-group-user__name=current_user.name
-        -#     .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
