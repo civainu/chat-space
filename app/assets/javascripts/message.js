@@ -2,7 +2,7 @@ $(document).on("turbolinks:load", function() {
 
   function buildMessage(message) {
     var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class="message">
+    var html = `<div class="message__text （data-message-id='${message.id}'）>
     <div class="upper-info">
     <div class="upper-info__user">
     ${message.user_name}
@@ -72,31 +72,36 @@ $('#new_message').on('submit', function(e) {
   $('#chat-group-users').append(html);
  }
 
- function update(){
-  if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    var url = location.href
-    var last_id = $('.main-body__text').last().data('message-id')
-    $.ajax({
-      url: url,
-      type: 'GET',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages) {
-      //追加するHTMLの入れ物を作る
-      var insertHTML = '';
-      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
-
-      //メッセージが入ったHTMLを取得
-
-      //メッセージを追加
-
-    })
-    .fail(function() {
-      console.log('error');
+ var reloadMessages = function() {
+  //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+  last_message_id = location.href
+  $.ajax({
+    //ルーティングで設定した通りのURLを指定
+    url: location.href,
+    //ルーティングで設定した通りhttpメソッドをgetに指定
+    type: 'get',
+    dataType: 'json',
+    //dataオプションでリクエストに値を含める
+    data: {id: last_message_id}
+  })
+  .done(function(messages) {
+    //追加するHTMLの入れ物を作る
+    var insertHTML = '';
+    //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+    json.messages.forEach(function(message){
+      if( message.id > last_id){
+        newhtml += buildHTML(message)
+       }
+     })
+    //メッセージが入ったHTMLを取得
+    $('.messages').append(newhtml);
+    scroll();
+  })
+    //メッセージを追加
+    .fail(function(data){
+      alert('自動更新に失敗しました')
     });
-  };
-}
+  }
 
 $('#user-search-field').on("keyup", function(){
   var input = $('#user-search-field').val();
@@ -133,4 +138,3 @@ $('.chat-group-form__field').on("click",".chat-group-user__btn--remove", functio
 })
 setInterval(reloadMessages, 5000);
 });
-
