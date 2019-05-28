@@ -50,7 +50,7 @@ $(document).on("turbolinks:load", function() {
 
   var reloadMessages = function() {
     var last_message_id = $('.message__text').last().data('message-id');
-    // console.log(last_message_id);
+
     var group_id = $('.main-header').last().data('group-id');
     $.ajax({
       url: `/groups/${group_id}/api/messages`,
@@ -59,15 +59,13 @@ $(document).on("turbolinks:load", function() {
       data: {id: last_message_id}
     })
     .done(function(data) {
-      //配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
       $.each(data, function(i, message) {
         var insertHTML = buildMessage(message)
-              //メッセージが入ったHTMLを取得
+
           $('.message__text').append(insertHTML);
           $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight+100}, "fast");
       })
     })
-    //メッセージを追加
     .fail(function() {
       alert('自動更新に失敗しました')
     });
