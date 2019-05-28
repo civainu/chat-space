@@ -1,11 +1,11 @@
-.message__text{ "data-message-id": "#{message.id}" }
+.message__text{'data-message-id': "#{message.id}", 'data-group-id': "#{message.group_id}"}
   .upper-info
     .upper-info__user
       = message.user.name
     .upper-info__date
-      = format_posted_time(message.created_at)
-  .message__text
-    - if message.content.present?
-      %p.lower-message__content
-        = message.content
-    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+      = message.created_at.strftime('%Y/%m/%d %H:%M:%S')
+    .message__comment
+      - if message.content.present?
+        %p.lower-message__content
+          = message.content
+      = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

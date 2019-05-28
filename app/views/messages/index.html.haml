@@ -4,7 +4,7 @@
 %div.wrapper
   = render 'shared/side_bar'
 %div.chat-main
-  %div.main-header
+  %div.main-header{'data-group-id': "#{@group.id}"}
     %div.current-group
       %h2.current-group__name
         = @group.name
